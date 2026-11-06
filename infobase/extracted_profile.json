@@ -1,0 +1,263 @@
+{
+  "personal": {
+    "name": "Mohammad Waiz Mirza",
+    "preferred_name": "Waiz Mirza",
+    "title": "Business Analyst",
+    "tagline": "Understanding user needs, analysing processes, and translating business problems into clear digital solutions.",
+    "location": "Bristol, United Kingdom",
+    "email": "Mohammad2.Mirza@live.uwe.ac.uk",
+    "github": "https://github.com/wisemirza",
+    "tableau_public": "https://public.tableau.com",
+    "status": "Available for Junior Business Analyst & Product Analyst roles",
+    "avatar": "/waizavatar.jpg"
+  },
+  "summary": "Data Science and AI undergraduate at UWE Bristol with a computing and business management foundation (NCC Level 4 & 5 Diplomas) and hands-on experience designing and delivering digital products. Strong focus on discovering real user friction, mapping AS-IS and TO-BE workflows, writing crisp user stories and functional requirements, and validating outcomes through user feedback and web analytics.",
+  "academic_background": [
+    {
+      "institution": "University of the West of England (UWE Bristol)",
+      "degree": "BSc (Hons) Data Science and Artificial Intelligence (Top-Up)",
+      "period": "2026 – 2027 (Expected)",
+      "status": "In Progress (Final Year)",
+      "student_id": "26041374",
+      "focus": "Applied machine learning, explainable AI (SHAP), data processing with Python/Pandas, ethical algorithmic evaluation, and data-driven systems.",
+      "capstone": "Detecting AI-Generated and Humanized Text: An Explainable Machine Learning Approach with SHAP (DAIGT-V2 dataset, 44,868 essays, 7 stylometric metrics)."
+    },
+    {
+      "institution": "NCC Education (Britan International Academy, Kuwait)",
+      "degree": "Level 5 Diploma in Computing (with Business Management) — L5DCBM",
+      "period": "2025 – 2026",
+      "status": "Pass (120 Credits, Level 5 RQF)",
+      "candidate_id": "P00204914",
+      "focus": "Information Systems in Organisations (4,300+ word analytical report), Principles of Business Operations (4,100+ word organizational case study), Business IT Project, and Databases.",
+      "key_achievement": "In-depth research on process optimisation, enterprise information systems, organisational structures, and business operations."
+    },
+    {
+      "institution": "NCC Education (Britan International Academy, Kuwait)",
+      "degree": "Level 4 Diploma in Computing (with Business Management) — L4DCBM",
+      "period": "2024 – 2025",
+      "status": "Pass (120 Credits, Level 4 RQF)",
+      "focus": "IT Project Management (comprehensive project charter, SMART objectives, vendor buy-vs-build evaluation, risk register, Gantt scheduling, and UAT test plan for multilingual customer service systems), Artificial Intelligence fundamentals, eBusiness, and Software Engineering."
+    },
+    {
+      "institution": "NCC Education",
+      "degree": "Level 3 International Foundation Diploma for Higher Education Studies",
+      "period": "2023 – 2024",
+      "status": "Completed",
+      "focus": "Foundation computing, quantitative methods, business studies, and academic communication."
+    }
+  ],
+  "experience": [
+    {
+      "role": "Student Representative — Data Science & AI",
+      "organisation": "University of the West of England (UWE Bristol)",
+      "period": "2026 – Present",
+      "type": "Leadership & Governance",
+      "responsibilities": [
+        "Elected by peers to represent cohort views across the BSc Data Science & AI programme.",
+        "Gather feedback from a diverse international cohort regarding curriculum delivery, assessment deadlines, and technical lab resources.",
+        "Translate student concerns into constructive agenda points for Student-Staff Liaison Committee (SSLC) meetings.",
+        "Close communication loops by relaying university faculty actions, adjustments, and policy updates back to students."
+      ]
+    },
+    {
+      "role": "Digital Product Creator & Content Lead",
+      "organisation": "Independent Online Products & Channels",
+      "period": "2020 – Present",
+      "type": "Product & Growth",
+      "responsibilities": [
+        "Founded and operated 'Secret Facts' YouTube channel, growing the audience to 500,000+ subscribers and 264 million total lifetime views.",
+        "Analysed YouTube Studio retention drop-offs, click-through rates (CTR), and watch-time curves to iteratively refine content formats and thumbnail architectures.",
+        "Designed and shared reusable UI components and web layout templates on 21st.dev, contributing to open developer design systems.",
+        "Executed performance-driven short-form media campaigns across community monetization platforms like Whop."
+      ]
+    }
+  ],
+  "skills": {
+    "business_analysis": [
+      "Problem Identification & Scoping",
+      "Stakeholder Identification & Mapping",
+      "AS-IS & TO-BE Process Flowcharts",
+      "Functional Requirements Specifications (FRS)",
+      "User Stories & Acceptance Criteria (Gherkin)",
+      "User Acceptance Testing (UAT) Test Matrices",
+      "Gap Analysis & Root Cause Analysis",
+      "Miro Process Workshopping"
+    ],
+    "analytics_insights": [
+      "Google Analytics 4 (GA4)",
+      "Microsoft Clarity (Session Recordings & Heatmaps)",
+      "Tableau & Tableau Public",
+      "Dashboard Information Hierarchy",
+      "Funnel & Drop-off Analysis",
+      "Audience Segmentation",
+      "Chart Selection & Data Storytelling"
+    ],
+    "technical_delivery": [
+      "Firebase Cloud Firestore & Auth",
+      "Netlify Deployment & Continuous Delivery",
+      "GitHub Version Control & Pull Requests",
+      "RESTful API Principles",
+      "HTML5 & Semantic Mark-up",
+      "Tailwind CSS & Responsive Layouts",
+      "JavaScript (ES6+) & React",
+      "Python (Pandas, Scikit-learn, SHAP)"
+    ],
+    "ai_workflow": [
+      "AI-Assisted Prototyping (Google Antigravity, Cursor, Claude, ChatGPT)",
+      "Fast Iteration & Component Scaffolding",
+      "Model Interpretability (TreeSHAP Feature Contributions)",
+      "Ethical AI Auditing & Fairness Caveats"
+    ]
+  },
+  "case_studies": [
+    {
+      "id": "student-voice",
+      "title": "Student Voice — Bilingual Cohort Feedback & Voting Platform",
+      "subtitle": "Eliminating language and privacy barriers in university cohort communications",
+      "badge": "Live Platform & BA Case Study",
+      "year": "2026",
+      "live_url": "https://studentrep.netlify.app",
+      "github_url": "https://github.com/wisemirza/Studentrep",
+      "problem": "Cohort communication in the UWE Data Science & AI degree was held almost entirely in informal WhatsApp groups. International Chinese-speaking students faced language friction, many peers hesitated to raise sensitive module issues because their private phone numbers were visible to everyone, and feedback was lost in endless casual chat without any prioritisation for the course committee.",
+      "role_and_approach": "As Student Representative, I ran a requirements discovery exercise with fellow students. I mapped the broken AS-IS communication flow against a streamlined TO-BE platform model. I authored formal BA documentation including functional requirements, user stories with acceptance criteria, and a UAT test matrix covering anonymous submissions, server-side translation, and content moderation.",
+      "steps_taken": [
+        "Conducted discovery sessions with domestic and international students to identify feedback barriers.",
+        "Produced AS-IS vs TO-BE workflow diagrams in Miro highlighting drop-off points in WhatsApp groups.",
+        "Drafted functional specifications for 3 personas: Student (anonymous submitter/voter), Student Rep (consolidator/liaison), and Course Leader (reviewer).",
+        "Built and launched a responsive, mobile-first web application with single-tap English and Simplified Chinese switching (EN / 中文).",
+        "Implemented frictionless zero-account submission with server-side rate limiting and HMAC voter token hashing to preserve anonymity.",
+        "Configured atomic Firestore transactions to prevent duplicate voting while strictly prohibiting direct client-side database writes.",
+        "Built a password-protected administrative console with instant QR code generator for in-person lecture hall feedback rounds."
+      ],
+      "tools_used": ["Firebase Cloud Firestore", "Node.js", "Express", "Netlify", "Miro", "HTML5/CSS3", "JavaScript"],
+      "artifacts_produced": [
+        "AS-IS vs TO-BE Process Maps",
+        "Stakeholder Power/Interest Matrix",
+        "Functional Requirements Document (FRD)",
+        "User Stories & Given-When-Then Acceptance Criteria",
+        "UAT Test Scenarios & Traceability Matrix"
+      ],
+      "outcome": "Eliminated contact-sharing fears and language barriers across the cohort. Enabled students to submit and vote on module issues in under 30 seconds. Elevated cohort participation and provided structured, priority-ranked evidence directly to university faculty during Student-Staff Liaison Committee meetings."
+    },
+    {
+      "id": "capital-bikeshare",
+      "title": "Capital Bikeshare — Operations & Fleet Demand Analytics Dashboard",
+      "subtitle": "Interactive operational intelligence across 17,379 hourly rental records",
+      "badge": "Live Dashboard",
+      "year": "2026",
+      "live_url": "https://wisemirza.github.io/Capital-bikeshare-dashboard/",
+      "github_url": "https://github.com/wisemirza/Capital-bikeshare-dashboard",
+      "problem": "Fleet rebalancing teams in Washington D.C. struggle with contrasting demand profiles: high-volume commuter surges on weekdays versus unpredictable weather-dependent leisure rides on weekends. Operations managers needed a responsive dashboard to quickly spot peak hourly load and seasonal patterns without navigating static spreadsheet reports.",
+      "role_and_approach": "Acted as Product Analyst and UI Architect. Formulated user personas for Fleet Logistics Coordinators and Regional Operations Managers. Translated raw UCI Bike Sharing records (17,379 hourly logs over 731 operational days) into an executive visual dashboard with real-time dynamic filtering.",
+      "steps_taken": [
+        "Audited the source dataset (UCI Bike Sharing) and established key business metrics: Total Trips, Daily Average, Registered/Casual Split, and Weather Severity Impact.",
+        "Designed the visual information architecture: primary KPI cards at the top, a semi-circular radial gauge for user mix, followed by multi-dimensional time series.",
+        "Constructed a 168-cell 24-Hour × 7-Day Demand Heatmap to expose commuter peaks (08:00 and 17:00 weekdays) versus mid-day weekend leisure volume.",
+        "Implemented instant client-side multi-filter controls (Year: All, 2011, 2012; Day Type: All, Working Days, Weekends/Holidays) with zero backend latency.",
+        "Conducted UI responsiveness testing across desktop, tablet, and mobile displays."
+      ],
+      "tools_used": ["HTML5", "Tailwind CSS", "Chart.js", "Vanilla JavaScript (ES6+)", "UCI Machine Learning Repository"],
+      "artifacts_produced": [
+        "Operational Metric Definition Sheet",
+        "Executive Dashboard Wireframe & Information Flow",
+        "Commuter vs Leisure Persona Profiles",
+        "Fleet Rebalancing Rule Matrix"
+      ],
+      "outcome": "Delivered a lightweight, zero-dependency operations tool hosted on GitHub Pages. Proved that registered commuters represent ~81% of all trips with sharp commuter spikes, allowing operations teams to plan van-based bike relocations accurately before 07:30 AM."
+    },
+    {
+      "id": "explainable-ai-detector",
+      "title": "Explainable AI Text Classifier — Transparent Stylometric Analysis",
+      "subtitle": "Replacing black-box AI detection scores with transparent, accountable writing metrics",
+      "badge": "Final Year Academic Project",
+      "year": "2026",
+      "live_url": "https://github.com/wisemirza/Detect-AI",
+      "github_url": "https://github.com/wisemirza/Detect-AI",
+      "problem": "Commercial AI detection tools (Turnitin, GPTZero, Undetectable AI) present high-stakes percentage scores without explaining how the decision was reached. Studies (Liang et al., 2023) show these tools disproportionately flag non-native English students as AI simply for using formal grammar, leading to unwarranted academic penalties.",
+      "role_and_approach": "Conducted academic research and built a transparent prototype for my UWE Data Science & AI degree project. Rather than treating detection as an opaque neural network, I designed an interpretable pipeline that evaluates 7 measurable, length-invariant writing habits and uses TreeSHAP to reveal exactly how each habit pulled the score up or down.",
+      "steps_taken": [
+        "Selected and cleaned Kaggle's DAIGT-V2 dataset containing 44,868 essays (27,371 human essays and 17,497 AI generations from ChatGPT, GPT-4, Claude, PaLM, LLaMA, and Mistral).",
+        "Engineered 7 length-invariant stylometric features: sentence length variation, average sentence length, commas per 100w, transition words per 100w, average word length, semicolons/colons, and punctuation density.",
+        "Trained a Random Forest classifier using prompt-grouped 80/20 train/test splitting, ensuring the model was tested strictly on unseen topics.",
+        "Integrated the TreeSHAP library to calculate exact local feature attributions, explaining the contribution of each individual writing habit.",
+        "Embedded prominent ethical caveats on the interface, advising educators that no stylometric model is 100% infallible and must never be used alone to penalise students."
+      ],
+      "tools_used": ["Python", "Scikit-learn", "TreeSHAP", "Pandas", "Flask", "DAIGT-V2 Kaggle Dataset"],
+      "artifacts_produced": [
+        "Academic Project Proposal & Scope Document (UFCEKP-30-3)",
+        "Feature Engineering & Length-Invariance Specification",
+        "Ethical Risk Assessment & Misuse Prevention Guidelines",
+        "Confusion Matrix & Held-Out Test Evaluation Report (83.1% Accuracy, 4.4% Human FPR at 0.60 threshold)"
+      ],
+      "outcome": "Demonstrated how machine learning models can be made explainable and auditable in high-stakes educational contexts, providing transparent evidence rather than opaque percentage probabilities."
+    },
+    {
+      "id": "bristol-road-safety",
+      "title": "Bristol Road Safety Explorer — DfT Police Collision Analytics",
+      "subtitle": "Spatial hotspot grouping and multi-table collision analysis for highway safety officers",
+      "badge": "Data & Spatial Analytics",
+      "year": "2026",
+      "live_url": "https://github.com/wisemirza/bristol_road_safety_explorer",
+      "github_url": "https://github.com/wisemirza/bristol_road_safety_explorer",
+      "problem": "UK Department for Transport (DfT) road casualty data spans millions of records with separate tables for collisions, vehicles, and casualties. Safety officers evaluating Bristol roads often struggled with relational grain multiplication and unclear changes in reporting systems (such as Avon & Somerset's 2025 transition to injury-based reporting).",
+      "role_and_approach": "Architected an exploratory browser dashboard that processes raw DfT open datasets into an intuitive spatial investigation platform for road safety inspectors, complete with plain-English methodology documentation.",
+      "steps_taken": [
+        "Resolved complex relational grain: separated distinct collision counts from casualty headcounts to prevent Cartesian join inflation.",
+        "Implemented DBSCAN spatial clustering with a 25-metre neighbourhood radius to identify candidate repeat collision clusters without relying on arbitrary boundary lines.",
+        "Built interactive Leaflet street maps, weekday-by-hour collision heatmaps, and casualty circumstance breakdowns.",
+        "Compiled thorough QA documentation (VALIDATION.md) disclosing source data limitations, unrecorded codes, and Avon & Somerset police reporting shifts."
+      ],
+      "tools_used": ["Python (Pandas, Scikit-learn, DBSCAN)", "Leaflet", "OpenStreetMap", "Chart.js", "DfT Road Safety Open Data"],
+      "artifacts_produced": [
+        "Data Dictionary & Relational Join Specification",
+        "DBSCAN Clustering Parameter Rationale",
+        "QA & Limitation Disclosure Documentation (VALIDATION.md)",
+        "One-click Collision-Level CSV Export Engine"
+      ],
+      "outcome": "Created a zero-dependency standalone dashboard that lets safety officers inspect repeat-incident clusters, cross-filter by vehicle and road user types, and export clean subsets for field inspection."
+    },
+    {
+      "id": "creator-prompt-platform",
+      "title": "AI Image-Prompt Platform — Retention & Supply Funnel Analysis",
+      "subtitle": "Using behavioral analytics to turn 10,000 monthly visitors into active contributors",
+      "badge": "User Insights & Growth",
+      "year": "2025 – 2026",
+      "problem": "An early-stage AI prompt sharing community attracted strong monthly traffic (~10,000 unique visitors), but user behavior was overwhelmingly passive: visitors copied prompts but rarely contributed new ones, threatening community sustainability.",
+      "role_and_approach": "Conducted an end-to-end product funnel and user session analysis to uncover why readers dropped off without submitting content.",
+      "steps_taken": [
+        "Analysed user session replays and scroll heatmaps using Google Analytics and Microsoft Clarity.",
+        "Identified key friction points: an intimidating multi-field submission form and a total lack of creator incentives or recognition.",
+        "Proposed a two-sided value proposition: introduced creator monetization options and public contributor profile badges.",
+        "Streamlined the prompt contribution form, reducing mandatory input fields by 50%."
+      ],
+      "tools_used": ["Google Analytics 4", "Microsoft Clarity", "Heatmap Analysis", "Session Replay Auditing", "UX Wireframing"],
+      "artifacts_produced": [
+        "Funnel Drop-off Analysis Report",
+        "Creator Journey Map & Motivation Canvas",
+        "Streamlined Prompt Submission Wireframes"
+      ],
+      "outcome": "Onboarded 16 independent creator sellers who began contributing exclusive prompt sets regularly, transforming a one-way consumer site into a bilateral community."
+    },
+    {
+      "id": "tableau-visualisations",
+      "title": "Tableau Executive Visualisation Portfolio",
+      "subtitle": "Practising chart selection, cognitive load management, and stakeholder storytelling",
+      "badge": "Tableau Dashboards",
+      "year": "2026",
+      "problem": "Raw multi-quarter business and environmental datasets often fail to convey actionable insights when presented in raw tables or overly complex visualizations.",
+      "role_and_approach": "Built a collection of focused Tableau dashboards designed for non-technical decision makers, emphasizing visual hierarchy, chart suitability, and scannability.",
+      "steps_taken": [
+        "Designed the Bristol Road Safety Tableau dashboard: visualising five-year casualty trends, pedestrian severity rates, and high-frequency corridors.",
+        "Built the Cardiff Climate Trends dashboard: tracking temperature anomalies, precipitation patterns, and seasonal shifts over multi-decade records.",
+        "Created the Alibaba Quarterly Commercial Sales dashboard: breaking down regional revenue growth, product category performance, and seasonal peaks."
+      ],
+      "tools_used": ["Tableau Desktop", "Tableau Public", "Calculated Fields", "Parameter Controls"],
+      "artifacts_produced": [
+        "Visual Encodings Rationale",
+        "Interactive Story Points",
+        "Published Tableau Public Dashboards"
+      ],
+      "outcome": "Demonstrated the ability to select the right chart type for distinct user audiences (operations managers, environmental researchers, commercial directors) to facilitate rapid data-driven choices."
+    }
+  ]
+}
