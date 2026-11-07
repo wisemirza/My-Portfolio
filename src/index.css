@@ -5,20 +5,39 @@
 :root {
   /* Soft expo-out curve: fast start, long gentle settle. Used everywhere so motion feels unified. */
   --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+  --bg-page: #f5f4f0;
+  --text-page: #18181b;
+  --selection-bg: #e4e4e7;
+  --selection-text: #18181b;
+  --underline-color: #a1a1aa;
+}
+
+html.dark {
+  --bg-page: #09090b;
+  --text-page: #f4f4f5;
+  --selection-bg: #27272a;
+  --selection-text: #f4f4f5;
+  --underline-color: #71717a;
 }
 
 @layer base {
   html {
-    color-scheme: dark;
-    background-color: #09090b;
+    color-scheme: light;
+    background-color: var(--bg-page);
+    transition: background-color 0.35s ease, color 0.35s ease;
     /* Keeps the scrollbar gutter constant so pages never shift sideways when navigating. */
     scrollbar-gutter: stable;
     -webkit-text-size-adjust: 100%;
   }
 
+  html.dark {
+    color-scheme: dark;
+  }
+
   body {
-    background-color: #09090b;
-    color: #f4f4f5;
+    background-color: var(--bg-page);
+    color: var(--text-page);
+    transition: background-color 0.35s ease, color 0.35s ease;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -26,9 +45,18 @@
   }
 
   ::selection {
-    background-color: #27272a;
-    color: #f4f4f5;
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
   }
+}
+
+/* Soft overhead studio spotlight so the page never feels flat or dead */
+.ambient-spotlight {
+  background: radial-gradient(ellipse 70% 42% at 50% 0%, rgba(24, 24, 27, 0.045), transparent 75%);
+}
+
+html.dark .ambient-spotlight {
+  background: radial-gradient(ellipse 70% 42% at 50% 0%, rgba(255, 255, 255, 0.055), transparent 75%);
 }
 
 /* ------------------------------------------------------------------
@@ -75,7 +103,7 @@
 
 /* Animated underline: grows from the left on hover instead of popping in. */
 .link-underline {
-  background-image: linear-gradient(#71717a, #71717a);
+  background-image: linear-gradient(var(--underline-color), var(--underline-color));
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0% 1px;
