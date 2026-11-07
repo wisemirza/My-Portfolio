@@ -708,6 +708,8 @@ const Lanyard = ({
   finish = 'glossy',
   cornerRadius = 0.3,
   size = 0.6,
+  cardPixelHeight,
+  strapLengthPx,
   anchor = 'center',
   alignLeftWith,
   strapLength = 0.5,
@@ -737,6 +739,8 @@ const Lanyard = ({
     finish,
     cornerRadius,
     size,
+    cardPixelHeight,
+    strapLengthPx,
     anchor,
     alignLeftWith,
     strapLength,
@@ -920,10 +924,23 @@ const Lanyard = ({
     const frameView = () => {
       const s = settingsRef.current;
       const aspect = view.width / view.height;
-      let viewHeight = layout.height / clamp(s.size, 0.15, 0.9);
+      
+      let worldUnitsPerPixel;
+      if (s.cardPixelHeight) {
+        worldUnitsPerPixel = layout.height / s.cardPixelHeight;
+      } else {
+        const targetCardHeight = view.height * clamp(s.size, 0.05, 0.9);
+        worldUnitsPerPixel = layout.height / targetCardHeight;
+      }
+      
+      let viewHeight = view.height * worldUnitsPerPixel;
       const minimumWidth = layout.width / 0.72;
-      if (viewHeight * aspect < minimumWidth) viewHeight = minimumWidth / aspect;
+      if (viewHeight * aspect < minimumWidth) {
+        viewHeight = minimumWidth / aspect;
+        worldUnitsPerPixel = viewHeight / view.height;
+      }
       const viewWidth = viewHeight * aspect;
+
       camera.aspect = aspect;
       camera.position.set(0, 0, viewHeight / 2 / Math.tan((FOV * Math.PI) / 360));
       camera.lookAt(0, 0, 0);
@@ -954,7 +971,12 @@ const Lanyard = ({
       }
 
       const anchorY = viewHeight / 2 + 0.2;
-      const cardTop = viewHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
+      let cardTop;
+      if (s.strapLengthPx) {
+        cardTop = viewHeight / 2 - s.strapLengthPx * worldUnitsPerPixel;
+      } else {
+        cardTop = viewHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
+      }
       const hangTop = cardTop + (layout.hangY - layout.height / 2);
       sim.anchor.set(anchorX, anchorY, 0);
       configureSimulation(sim, layout, anchorY - hangTop);
@@ -980,7 +1002,7 @@ const Lanyard = ({
         ring.position.set(0, layout.ringY, 0);
         applied.framingKey = '';
       }
-      const framingKey = `${layoutKey}|${s.size}|${s.anchor}|${s.alignLeftWith}|${s.strapLength}|${view.width}|${view.height}`;
+      const framingKey = `${layoutKey}|${s.size}|${s.cardPixelHeight}|${s.anchor}|${s.alignLeftWith}|${s.strapLength}|${s.strapLengthPx}|${view.width}|${view.height}`;
       if (framingKey !== applied.framingKey) {
         frameView();
         if (!placed) {

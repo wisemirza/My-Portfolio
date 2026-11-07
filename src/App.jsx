@@ -41,8 +41,8 @@ export default function App() {
   return (
     <main className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col items-center justify-start px-6 pt-0 pb-20 selection:bg-blue-600 selection:text-white antialiased relative overflow-x-hidden">
       
-      {/* 1. Lanyard Hanging ID Badge - Interactive 3D component starting from the top, full width, layered above text */}
-      <div className="absolute top-0 left-0 right-0 w-full h-[520px] sm:h-[580px] z-20 pointer-events-none overflow-visible">
+      {/* 1. Lanyard Hanging ID Badge - Covers entire page, no cutoff anywhere, layered above all elements */}
+      <div className="absolute inset-0 w-full h-full min-h-screen z-20 pointer-events-none overflow-visible">
         <Lanyard 
           frontImage="/profile.jpg"
           backImage="/profile.jpg"
@@ -50,14 +50,14 @@ export default function App() {
           finish="metallic"
           metal="silver"
           strapColor="#18181b"
-          size={0.38}
-          strapLength={0.16}
+          cardPixelHeight={145}
+          strapLengthPx={70}
           alignLeftWith="#intro-heading"
           interactive={true}
         />
       </div>
 
-      <div className="w-full max-w-xl mx-auto space-y-8 pt-[310px] sm:pt-[330px] relative z-10">
+      <div className="w-full max-w-xl mx-auto space-y-8 pt-[255px] sm:pt-[265px] relative z-10">
 
         {/* 2. Heading with integrated Location Badge right beside name */}
         <div className="fade-in-2 space-y-2">
