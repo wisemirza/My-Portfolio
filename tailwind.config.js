@@ -3,7 +3,13 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    // Old multi-section site, not used by the live app. Excluded so its classes don't bloat the CSS.
+    "!./src/legacy/**",
   ],
+  future: {
+    // Hover styles only apply on devices that can actually hover, so touch screens never get "stuck" hover states.
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {
@@ -50,9 +56,9 @@ export default {
       backgroundSize: {
         'grid-pattern': '24px 24px',
       },
-      animation: {
-        'pulse-subtle': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-      }
+      transitionTimingFunction: {
+        silk: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      },
     },
   },
   plugins: [],

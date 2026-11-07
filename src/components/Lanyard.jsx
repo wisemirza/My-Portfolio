@@ -22,6 +22,12 @@ const RING_TUBE = 0.0135;
 const EYELET_RADIUS = 0.036;
 const CLAMP_BODY = 0.15;
 const FACE_WIDTH = 1024;
+// Upper bound for the canvas backing store (width x height x pixelRatio squared).
+const MAX_BACKING_PIXELS = 4000000;
+// The render loop stops once motion stays below REST_ENERGY (roughly 3 px/s on screen, invisible)
+// for REST_SECONDS, so an idle page costs no CPU/GPU. Any hover-drag wakes it again.
+const REST_ENERGY = 1.5e-3;
+const REST_SECONDS = 0.5;
 
 const FINISHES = {
   glossy: { roughness: 0.35, metalness: 0, clearcoat: 0.85, clearcoatRoughness: 0.08, foil: 0, anisotropy: 0 },
@@ -331,43 +337,6 @@ const makeCanvasTexture = (canvas, anisotropy) => {
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.anisotropy = anisotropy;
-  return texture;
-};
-
-const buildGrainTexture = () => {
-  const size = 128;
-  const canvas = document.createElement('canvas');
-  canvas.width = size;
-  canvas.height = size;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return new THREE.CanvasTexture(canvas);
-  const random = seeded(7);
-  const field = Float32Array.from({ length: size * size }, () => random());
-  const height = (x, y) => {
-    let sum = 0;
-    for (let j = -1; j <= 1; j++) {
-      for (let i = -1; i <= 1; i++) sum += field[((y + j + size) % size) * size + ((x + i + size) % size)];
-    }
-    return (sum / 9) * 1.6;
-  };
-  const image = ctx.createImageData(size, size);
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
-      const nx = height((x - 1 + size) % size, y) - height((x + 1) % size, y);
-      const ny = height(x, (y - 1 + size) % size) - height(x, (y + 1) % size);
-      const length = Math.hypot(nx, ny, 1);
-      const i = (y * size + x) * 4;
-      image.data[i] = ((nx / length) * 0.5 + 0.5) * 255;
-      image.data[i + 1] = ((ny / length) * 0.5 + 0.5) * 255;
-      image.data[i + 2] = ((1 / length) * 0.5 + 0.5) * 255;
-      image.data[i + 3] = 255;
-    }
-  }
-  ctx.putImageData(image, 0, 0);
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.wrapS = THREE.RepeatWrapping;
-  texture.wrapT = THREE.RepeatWrapping;
-  texture.repeat.set(5, 7);
   return texture;
 };
 
@@ -696,7 +665,7 @@ const stepSimulation = (sim, dt, physics, time) => {
 
   let energy = body.velocity.lengthSq() + body.angular.lengthSq() * 0.3;
   for (let i = 1; i < JOINTS; i++) energy += velocities[i].lengthSq() * 0.05;
-  sim.calm = energy < 2e-4 ? sim.calm + dt : 0;
+  sim.calm = energy < REST_ENERGY ? sim.calm + dt : 0;
 };
 
 const Lanyard = ({
@@ -800,7 +769,6 @@ const Lanyard = ({
     const strapTexture = makeCanvasTexture(strapCanvas, anisotropy);
     strapTexture.wrapS = THREE.ClampToEdgeWrapping;
     strapTexture.wrapT = THREE.RepeatWrapping;
-    const grain = buildGrainTexture();
     const weave = buildWeaveTexture();
     const foilUniforms = {
       foilStrength: { value: 0 },
@@ -890,6 +858,7 @@ const Lanyard = ({
     let visible = true;
     let alive = true;
     let placed = false;
+    let booted = false;
     let hovering = false;
     let press = null;
     let imageToken = 0;
@@ -1146,6 +1115,7 @@ const Lanyard = ({
     };
 
     const render = () => {
+      if (!booted) return;
       cardGroup.position.copy(sim.body.position);
       cardGroup.quaternion.copy(sim.body.quaternion);
       updateBand();
@@ -1193,12 +1163,12 @@ const Lanyard = ({
         placeHanging(sim, layout, false);
       }
       render();
-      const resting = sim.calm > 1.2 && !sim.grab && current.breeze === 0;
+      const resting = sim.calm > REST_SECONDS && !sim.grab && current.breeze === 0;
       if (visible && !resting) raf = requestAnimationFrame(tick);
     };
 
     const start = () => {
-      if (raf || !visible || !alive) return;
+      if (raf || !visible || !alive || !booted) return;
       sim.calm = 0;
       last = performance.now();
       raf = requestAnimationFrame(tick);
@@ -1239,8 +1209,22 @@ const Lanyard = ({
       body.angular.addScaledVector(up, FLIP_SPIN * direction);
     };
 
+    // Hover hit-testing runs at most once per frame no matter how fast the mouse moves.
+    let hoverEvent = null;
+    let hoverRaf = 0;
+    const updateHover = () => {
+      hoverRaf = 0;
+      const event = hoverEvent;
+      hoverEvent = null;
+      if (!event || !alive || sim.grab) return;
+      toPointer(event);
+      hovering = !!pickCard();
+      canvas.style.pointerEvents = hovering ? 'auto' : 'none';
+      setCursor(hovering ? 'grab' : '');
+    };
+
     const onWindowPointerMove = event => {
-      if (!settingsRef.current.interactive) return;
+      if (!booted || !settingsRef.current.interactive) return;
       if (sim.grab) {
         toPointer(event);
         if (press && Math.hypot(event.clientX - press.x, event.clientY - press.y) > 6) press = null;
@@ -1249,16 +1233,8 @@ const Lanyard = ({
         return;
       }
       if (event.pointerType === 'touch') return;
-      toPointer(event);
-      const hit = pickCard();
-      hovering = !!hit;
-      if (hovering) {
-        canvas.style.pointerEvents = 'auto';
-        setCursor('grab');
-      } else {
-        canvas.style.pointerEvents = 'none';
-        setCursor('');
-      }
+      hoverEvent = event;
+      if (!hoverRaf) hoverRaf = requestAnimationFrame(updateHover);
     };
 
     const onPointerDown = event => {
@@ -1330,9 +1306,9 @@ const Lanyard = ({
       start();
     };
 
+    // pointermove / pointerup are handled on window only (they bubble from the canvas, and the
+    // window also receives them while a drag is captured), so each event is processed once.
     canvas.addEventListener('pointerdown', onPointerDown);
-    canvas.addEventListener('pointermove', onWindowPointerMove);
-    canvas.addEventListener('pointerup', onPointerUp);
     canvas.addEventListener('pointercancel', onPointerUp);
     canvas.addEventListener('lostpointercapture', onPointerUp);
 
@@ -1343,9 +1319,13 @@ const Lanyard = ({
     window.addEventListener('touchend', onTouchEnd, { passive: true });
 
     const resize = () => {
+      if (!alive) return;
       view.width = Math.max(1, container.clientWidth);
       view.height = Math.max(1, container.clientHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      // The canvas covers the whole page, so cap the backing store size instead of blindly
+      // rendering at 2x. Small viewports stay crisp, huge ones stay cheap.
+      const fit = Math.sqrt(MAX_BACKING_PIXELS / (view.width * view.height));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2, Math.max(1, fit)));
       renderer.setSize(view.width, view.height, false);
       applied.framingKey = '';
       apply();
@@ -1354,7 +1334,6 @@ const Lanyard = ({
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
-    window.addEventListener('resize', resize);
 
     const intersectionObserver = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
@@ -1366,34 +1345,45 @@ const Lanyard = ({
     };
     document.addEventListener('visibilitychange', onVisibility);
 
+    // Build geometry, framing and textures first (nothing is drawn yet), then compile shaders
+    // without blocking the main thread. Only then reveal the canvas and start the simulation,
+    // so the page's entrance animation never stutters while WebGL warms up.
     applyRef.current = apply;
     resize();
-    setTimeout(resize, 60);
-    setTimeout(resize, 200);
+
+    const boot = () => {
+      if (!alive || booted) return;
+      booted = true;
+      container.dataset.ready = 'true';
+      resize();
+      start();
+    };
+    const compiled = renderer.compileAsync ? renderer.compileAsync(scene, camera) : Promise.resolve();
+    Promise.resolve(compiled).catch(() => undefined).then(boot);
 
     return () => {
       alive = false;
       cancelAnimationFrame(raf);
+      cancelAnimationFrame(hoverRaf);
       applyRef.current = null;
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
-      window.removeEventListener('resize', resize);
       window.removeEventListener('pointermove', onWindowPointerMove);
       window.removeEventListener('pointerup', onPointerUp);
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('touchend', onTouchEnd);
       canvas.removeEventListener('pointerdown', onPointerDown);
-      canvas.removeEventListener('pointermove', onWindowPointerMove);
-      canvas.removeEventListener('pointerup', onPointerUp);
       canvas.removeEventListener('pointercancel', onPointerUp);
       canvas.removeEventListener('lostpointercapture', onPointerUp);
       [bodyMesh, frontMesh, backMesh, ring, clampMesh, eyelet, band].forEach(mesh => mesh.geometry?.dispose());
       [frontMaterial, backMaterial, edgeMaterial, invisibleFaceMaterial, metalMaterial, bandMaterial].forEach(material => material.dispose());
-      [frontTexture, backTexture, strapTexture, grain, weave].forEach(texture => texture.dispose());
+      [frontTexture, backTexture, strapTexture, weave].forEach(texture => texture.dispose());
       environment.dispose();
       renderer.dispose();
+      // Release the GPU context right away; browsers cap live WebGL contexts (~16).
+      renderer.forceContextLoss();
       if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
     };
   }, []);

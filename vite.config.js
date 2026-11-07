@@ -9,6 +9,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false
+    sourcemap: false,
+    // The three.js chunk is ~585 kB but is loaded lazily after first paint, so the warning is expected.
+    chunkSizeWarningLimit: 700
   }
 });

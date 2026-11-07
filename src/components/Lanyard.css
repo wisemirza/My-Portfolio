@@ -3,6 +3,14 @@
   width: 100%;
   height: 100%;
   overflow: visible;
+  /* Stays hidden until WebGL has compiled and the first frame is ready (see boot() in Lanyard.jsx),
+     then fades in while the card swings into place. */
+  opacity: 0;
+  transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lanyard[data-ready='true'] {
+  opacity: 1;
 }
 
 .lanyard-canvas {
@@ -12,3 +20,8 @@
   pointer-events: none;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .lanyard {
+    transition-duration: 0.01ms;
+  }
+}

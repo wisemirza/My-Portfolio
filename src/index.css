@@ -2,17 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Soft expo-out curve: fast start, long gentle settle. Used everywhere so motion feels unified. */
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @layer base {
   html {
     color-scheme: dark;
+    background-color: #09090b;
+    /* Keeps the scrollbar gutter constant so pages never shift sideways when navigating. */
+    scrollbar-gutter: stable;
+    -webkit-text-size-adjust: 100%;
   }
-  
+
   body {
     background-color: #09090b;
     color: #f4f4f5;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
@@ -21,80 +31,79 @@
   }
 }
 
-/* Premium smooth animations (GPU-accelerated, Apple/Vercel bezier) */
-@keyframes pageEnter {
+/* ------------------------------------------------------------------
+   Entrance motion
+   Only opacity + transform are animated (compositor only, no layout or paint).
+   Keyframes define just the starting state and the fill mode is `backwards`, so once an
+   animation ends the element returns to its natural style. Nothing stays pinned, hover and
+   active transforms keep working, and no extra GPU layers are kept alive.
+   Stagger with: style={{ '--i': index }}
+   ------------------------------------------------------------------ */
+@keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 14px, 0);
   }
 }
 
-@keyframes fadeUp {
+@keyframes rise-scale {
   from {
     opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 18px, 0) scale(0.985);
   }
 }
 
-@keyframes fadeScale {
-  from {
+@keyframes page-leave {
+  to {
     opacity: 0;
-    transform: scale(0.97) translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translate3d(0, -4px, 0);
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+.reveal {
+  animation: rise 0.95s var(--ease-silk) calc(var(--i, 0) * 85ms + 60ms) backwards;
+}
+
+.reveal-scale {
+  animation: rise-scale 1.05s var(--ease-silk) calc(var(--i, 0) * 85ms + 60ms) backwards;
+}
+
+.page-leaving {
+  animation: page-leave 0.2s ease-in forwards;
+  pointer-events: none;
+}
+
+/* Animated underline: grows from the left on hover instead of popping in. */
+.link-underline {
+  background-image: linear-gradient(#71717a, #71717a);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  transition: background-size 0.45s var(--ease-silk);
+}
+
+@media (hover: hover) {
+  .group:hover .link-underline,
+  .link-underline:hover {
+    background-size: 100% 1px;
   }
-  to {
-    opacity: 1;
+}
+
+.group:focus-visible .link-underline {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-scale,
+  .page-leaving {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }
-
-.animate-page {
-  animation: pageEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.anim-fade-up {
-  opacity: 0;
-  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.anim-fade-scale {
-  opacity: 0;
-  animation: fadeScale 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.anim-fade-in {
-  opacity: 0;
-  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Precise Stagger Delays */
-.delay-1 { animation-delay: 0.05s; }
-.delay-2 { animation-delay: 0.12s; }
-.delay-3 { animation-delay: 0.20s; }
-.delay-4 { animation-delay: 0.28s; }
-.delay-5 { animation-delay: 0.36s; }
-.delay-6 { animation-delay: 0.44s; }
-.delay-7 { animation-delay: 0.52s; }
-.delay-8 { animation-delay: 0.60s; }
-
-/* Backward compatibility for previous classes */
-.fade-in-1 { opacity: 0; animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards; }
-.fade-in-2 { opacity: 0; animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards; }
-.fade-in-3 { opacity: 0; animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.22s forwards; }
-.fade-in-4 { opacity: 0; animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards; }
