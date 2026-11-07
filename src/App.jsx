@@ -54,8 +54,8 @@ function HomePage() {
             finish="matte"
             metal="silver"
             strapColor="#18181b"
-            cardPixelHeight={150}
-            strapLengthPx={70}
+            cardPixelHeight={172}
+            strapLengthPx={76}
             alignLeftWith="#intro-heading"
             breeze={0}
             interactive
@@ -63,7 +63,7 @@ function HomePage() {
         </Suspense>
       </div>
 
-      <div className="relative z-10 w-full max-w-xl mx-auto space-y-8 pt-[260px] sm:pt-[270px]">
+      <div className="relative z-10 w-full max-w-xl mx-auto space-y-8 pt-[264px] sm:pt-[270px]">
         <div className="space-y-2">
           <div className="reveal flex items-center gap-3 flex-wrap" style={{ '--i': 0 }}>
             <h1 id="intro-heading" className="text-3xl sm:text-4xl font-bold tracking-tight text-white inline-block">
