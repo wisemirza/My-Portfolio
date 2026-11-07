@@ -4,7 +4,8 @@ import {
   ExternalLink, 
   Github, 
   Workflow, 
-  ArrowUpRight 
+  ArrowUpRight,
+  FileText
 } from 'lucide-react';
 
 export default function ProjectsPage({ onBack }) {
@@ -22,9 +23,24 @@ export default function ProjectsPage({ onBack }) {
             <span>Back to home</span>
           </button>
 
-          <span className="text-xs text-zinc-600 font-mono">
-            Waiz Mirza &middot; Projects
-          </span>
+          <div className="flex items-center gap-4">
+            <a
+              href="/Mohammad_Waiz_Mirza_Business_Analyst_CV.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
+            >
+              <FileText className="w-3.5 h-3.5 text-blue-400" />
+              <span>My CV</span>
+              <ArrowUpRight className="w-3 h-3 text-zinc-600" />
+            </a>
+
+            <span className="text-zinc-700">&middot;</span>
+
+            <span className="text-xs text-zinc-600 font-mono">
+              Waiz Mirza &middot; Projects
+            </span>
+          </div>
         </div>
 
         {/* Page Header */}

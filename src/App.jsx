@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Github, MapPin, ArrowUpRight, FolderKanban } from 'lucide-react';
+import { Mail, Github, MapPin, ArrowUpRight, FolderKanban, FileText } from 'lucide-react';
 import ProjectsPage from './components/ProjectsPage';
 
 export default function App() {
@@ -82,7 +82,7 @@ export default function App() {
           </p>
         </div>
 
-        {/* 4. Minimal touchpoints (Check out my projects first, then Email me, then GitHub, Bristol UK) */}
+        {/* 4. Minimal touchpoints (Check out my projects, My CV, Email me, GitHub, Bristol UK) */}
         <div className="fade-in-4 pt-4 border-t border-zinc-800/80 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-400">
           <button
             onClick={() => navigateTo('projects')}
@@ -92,6 +92,17 @@ export default function App() {
             <span>Check out my projects</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
           </button>
+
+          <a
+            href="/Mohammad_Waiz_Mirza_Business_Analyst_CV.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
+          >
+            <FileText className="w-4 h-4 text-blue-400" />
+            <span>My CV</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
+          </a>
 
           <a
             href="mailto:Mohammad2.Mirza@live.uwe.ac.uk"
