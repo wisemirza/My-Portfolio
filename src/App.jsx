@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Github, MapPin, ArrowUpRight, FolderKanban, FileText } from 'lucide-react';
 import ProjectsPage from './components/ProjectsPage';
+import Lanyard from './components/Lanyard';
 
 export default function App() {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  
   const isProjectsRoute = (hash) => {
     return typeof hash === 'string' && hash.startsWith('#/projects');
   };
@@ -40,29 +39,24 @@ export default function App() {
   }
 
   return (
-    <main className="min-h-screen bg-[#09090b] text-zinc-100 flex items-center justify-center px-6 py-16 selection:bg-blue-600 selection:text-white antialiased">
-      <div className="w-full max-w-xl mx-auto space-y-8">
-        
-        {/* 1. Circular Profile Frame */}
-        <div className="fade-in-1">
-          <div className="relative inline-block">
-            <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-b from-zinc-700 to-zinc-900 shadow-2xl ring-1 ring-zinc-800">
-              <img
-                src="/profile.jpg"
-                alt="Waiz Mirza"
-                onLoad={() => setImageLoaded(true)}
-                className={`w-full h-full object-cover rounded-full transition-opacity duration-700 ${
-                  imageLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
-              />
-            </div>
-            {/* Subtle active status indicator */}
-            <span 
-              className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-[#09090b]" 
-              title="Active & Open to roles" 
-            />
-          </div>
-        </div>
+    <main className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col items-center justify-start px-6 pt-0 pb-20 selection:bg-blue-600 selection:text-white antialiased overflow-x-hidden">
+      
+      {/* 1. Lanyard Hanging ID Badge - Interactive 3D component starting from the top */}
+      <div className="w-full max-w-xl h-[360px] sm:h-[400px] relative pointer-events-auto">
+        <Lanyard 
+          frontImage="/profile.jpg"
+          backImage="/profile.jpg"
+          cardColor="#ffffff"
+          finish="metallic"
+          metal="silver"
+          strapColor="#18181b"
+          size={0.65}
+          strapLength={0.35}
+          interactive={true}
+        />
+      </div>
+
+      <div className="w-full max-w-xl mx-auto space-y-8 -mt-6 sm:-mt-8">
 
         {/* 2. Heading with integrated Location Badge right beside name */}
         <div className="fade-in-2 space-y-2">
