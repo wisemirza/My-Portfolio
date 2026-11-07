@@ -46,7 +46,7 @@ export default function ProjectsPage({ onBack }) {
   // ==============================================================
   if (activeProject) {
     return (
-      <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-blue-600 selection:text-white antialiased">
+      <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-zinc-800 selection:text-zinc-100 antialiased">
         <div className="max-w-2xl mx-auto px-6 py-16 sm:py-20 space-y-12">
           
           {/* Top Navigation Only */}
@@ -113,7 +113,7 @@ export default function ProjectsPage({ onBack }) {
             <div className="space-y-3 pt-4 border-t border-zinc-800/80">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
-                  <Workflow className="w-4 h-4 text-blue-400" />
+                  <Workflow className="w-4 h-4 text-zinc-400" />
                   <span>Interactive BA Deliverables (Miro Board)</span>
                 </div>
                 <a
@@ -151,10 +151,10 @@ export default function ProjectsPage({ onBack }) {
                 href="https://studentrep.netlify.app"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500 font-medium"
+                className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500 font-medium"
               >
                 <span>Live Student Voice App</span>
-                <ArrowUpRight className="w-4 h-4 text-blue-400" />
+                <ArrowUpRight className="w-4 h-4 text-zinc-400" />
               </a>
 
               <span className="text-zinc-700">&middot;</span>
@@ -163,7 +163,7 @@ export default function ProjectsPage({ onBack }) {
                 href="https://github.com/wisemirza/Studentrep"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500 font-medium"
+                className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500 font-medium"
               >
                 <Github className="w-4 h-4 text-zinc-400" />
                 <span>GitHub Repository</span>
@@ -182,7 +182,7 @@ export default function ProjectsPage({ onBack }) {
   // PROJECTS OVERVIEW (No 'Projects' title, top nav only, clean button)
   // ==============================================================
   return (
-    <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-blue-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-zinc-800 selection:text-zinc-100 antialiased">
       <div className="max-w-2xl mx-auto px-6 py-16 sm:py-20 space-y-8">
         
         {/* Top Navigation Only */}
@@ -203,7 +203,7 @@ export default function ProjectsPage({ onBack }) {
         {/* Project Card */}
         <div className="space-y-4 pt-2">
           
-          {/* Visual Frame Container (Clickable, no blue outlines) */}
+          {/* Visual Frame Container (Clickable, no outlines) */}
           <div 
             onClick={() => openProject('student-voice')}
             className="group cursor-pointer relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800/90 bg-gradient-to-br from-zinc-900 via-[#101014] to-zinc-950 p-6 sm:p-8 flex items-center justify-center transition-all duration-300 hover:border-zinc-700 hover:shadow-2xl hover:shadow-black/50"
@@ -253,7 +253,7 @@ export default function ProjectsPage({ onBack }) {
             </span>
           </div>
 
-          {/* Button: Learn more about this project (NO blue outline, subtle bg lightening only) */}
+          {/* Button: Learn more about this project (Subtle bg lightening only) */}
           <div className="pt-2 px-1">
             <button
               onClick={() => openProject('student-voice')}

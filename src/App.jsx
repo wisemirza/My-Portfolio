@@ -39,7 +39,7 @@ export default function App() {
   }
 
   return (
-    <main className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col items-center justify-start px-6 pt-0 pb-20 selection:bg-blue-600 selection:text-white antialiased relative overflow-x-hidden">
+    <main className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col items-center justify-start px-6 pt-0 pb-20 selection:bg-zinc-800 selection:text-zinc-100 antialiased relative overflow-x-hidden">
       
       {/* 1. Lanyard Hanging ID Badge - Covers entire page, no cutoff anywhere, layered above all elements */}
       <div className="absolute inset-0 w-full h-full min-h-screen z-20 pointer-events-none overflow-visible">
@@ -66,11 +66,11 @@ export default function App() {
               Hi, I'm Waiz.
             </h1>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-zinc-400 bg-zinc-900 border border-zinc-800">
-              <MapPin className="w-3 h-3 text-blue-400" />
+              <MapPin className="w-3 h-3 text-zinc-400" />
               <span>Bristol, UK</span>
             </span>
           </div>
-          <p className="text-sm font-medium text-blue-400">
+          <p className="text-sm font-medium text-zinc-400">
             Aspiring Business Analyst &middot; Data Science &amp; AI Student
           </p>
         </div>
@@ -92,9 +92,9 @@ export default function App() {
         <div className="fade-in-4 pt-4 border-t border-zinc-800/80 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-400">
           <button
             onClick={() => navigateTo('projects')}
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500 cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500 cursor-pointer"
           >
-            <FolderKanban className="w-4 h-4 text-blue-400" />
+            <FolderKanban className="w-4 h-4 text-zinc-400" />
             <span>Check out my projects</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
           </button>
@@ -103,18 +103,18 @@ export default function App() {
             href="/Mohammad_Waiz_Mirza_Business_Analyst_CV.pdf"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500"
           >
-            <FileText className="w-4 h-4 text-blue-400" />
+            <FileText className="w-4 h-4 text-zinc-400" />
             <span>My CV</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
           </a>
 
           <a
             href="mailto:Mohammad2.Mirza@live.uwe.ac.uk"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500"
           >
-            <Mail className="w-4 h-4 text-blue-400" />
+            <Mail className="w-4 h-4 text-zinc-400" />
             <span>Email me</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
           </a>
@@ -123,7 +123,7 @@ export default function App() {
             href="https://github.com/wisemirza"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500"
           >
             <Github className="w-4 h-4 text-zinc-400" />
             <span>GitHub</span>
