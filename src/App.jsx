@@ -82,49 +82,53 @@ export default function App() {
           </p>
         </div>
 
-        {/* 4. Minimal touchpoints (Check out my projects, My CV, Email me, GitHub, Bristol UK) */}
-        <div className="fade-in-4 pt-4 border-t border-zinc-800/80 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-400">
-          <button
-            onClick={() => navigateTo('projects')}
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500 cursor-pointer"
-          >
-            <FolderKanban className="w-4 h-4 text-blue-400" />
-            <span>Check out my projects</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
-          </button>
+        {/* 4. Minimal touchpoints */}
+        <div className="fade-in-4 pt-4 border-t border-zinc-800/80 space-y-3">
+          {/* Action Links */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-400">
+            <button
+              onClick={() => navigateTo('projects')}
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500 cursor-pointer"
+            >
+              <FolderKanban className="w-4 h-4 text-blue-400" />
+              <span>Check out my projects</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
+            </button>
 
-          <a
-            href="/Mohammad_Waiz_Mirza_Business_Analyst_CV.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
-          >
-            <FileText className="w-4 h-4 text-blue-400" />
-            <span>My CV</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
-          </a>
+            <a
+              href="/Mohammad_Waiz_Mirza_Business_Analyst_CV.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
+            >
+              <FileText className="w-4 h-4 text-blue-400" />
+              <span>My CV</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
+            </a>
 
-          <a
-            href="mailto:Mohammad2.Mirza@live.uwe.ac.uk"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
-          >
-            <Mail className="w-4 h-4 text-blue-400" />
-            <span>Email me</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
-          </a>
+            <a
+              href="mailto:Mohammad2.Mirza@live.uwe.ac.uk"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
+            >
+              <Mail className="w-4 h-4 text-blue-400" />
+              <span>Email me</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
+            </a>
 
-          <a
-            href="https://github.com/wisemirza"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
-          >
-            <Github className="w-4 h-4 text-zinc-400" />
-            <span>GitHub</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
-          </a>
+            <a
+              href="https://github.com/wisemirza"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
+            >
+              <Github className="w-4 h-4 text-zinc-400" />
+              <span>GitHub</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
+            </a>
+          </div>
 
-          <div className="inline-flex items-center gap-1.5 text-zinc-500 text-xs sm:text-sm sm:ml-auto">
+          {/* Location cleanly positioned on the left directly underneath the links */}
+          <div className="flex items-center gap-1.5 text-zinc-500 text-xs sm:text-sm pt-0.5">
             <MapPin className="w-3.5 h-3.5 text-zinc-600" />
             <span>Bristol, UK</span>
           </div>
