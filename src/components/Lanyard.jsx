@@ -783,7 +783,7 @@ const Lanyard = ({
     const scene = new THREE.Scene();
     const environment = buildEnvironment(renderer);
     scene.environment = environment.texture;
-    const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 200);
+    const camera = new THREE.PerspectiveCamera(FOV, 1, 1, 150);
     const keyLight = new THREE.DirectionalLight(0xffffff, 1.6);
     keyLight.position.set(-2.5, 4, 6);
     const fillLight = new THREE.DirectionalLight(0xffffff, 0.35);
@@ -820,14 +820,21 @@ const Lanyard = ({
     };
 
     const frontMaterial = new THREE.MeshPhysicalMaterial({
-      map: frontTexture
+      map: frontTexture,
+      polygonOffset: true,
+      polygonOffsetFactor: -1,
+      polygonOffsetUnits: -2
     });
     const backMaterial = new THREE.MeshPhysicalMaterial({
-      map: backTexture
+      map: backTexture,
+      polygonOffset: true,
+      polygonOffsetFactor: -1,
+      polygonOffsetUnits: -2
     });
     frontMaterial.onBeforeCompile = injectFoil;
     backMaterial.onBeforeCompile = injectFoil;
     const edgeMaterial = new THREE.MeshPhysicalMaterial();
+    const invisibleFaceMaterial = new THREE.MeshBasicMaterial({ visible: false });
     const metalMaterial = new THREE.MeshStandardMaterial({ metalness: 1 });
     const bandMaterial = new THREE.MeshPhysicalMaterial({
       map: strapTexture,
@@ -841,7 +848,7 @@ const Lanyard = ({
     });
 
     const cardGroup = new THREE.Group();
-    const bodyMesh = new THREE.Mesh(undefined, edgeMaterial);
+    const bodyMesh = new THREE.Mesh(undefined, [invisibleFaceMaterial, edgeMaterial]);
     const frontMesh = new THREE.Mesh(undefined, frontMaterial);
     const backMesh = new THREE.Mesh(undefined, backMaterial);
     const ring = new THREE.Mesh(new THREE.TorusGeometry(RING_RADIUS, RING_TUBE, 18, 72), metalMaterial);
@@ -992,9 +999,9 @@ const Lanyard = ({
         bodyMesh.geometry = geometry.body;
         frontMesh.geometry = geometry.face;
         backMesh.geometry = geometry.face.clone();
-        frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.0006;
+        frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.0015;
         backMesh.rotation.y = Math.PI;
-        backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0006);
+        backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0015);
         ring.position.set(0, layout.ringY, 0);
         applied.framingKey = '';
       }
@@ -1383,7 +1390,7 @@ const Lanyard = ({
       canvas.removeEventListener('pointercancel', onPointerUp);
       canvas.removeEventListener('lostpointercapture', onPointerUp);
       [bodyMesh, frontMesh, backMesh, ring, clampMesh, eyelet, band].forEach(mesh => mesh.geometry?.dispose());
-      [frontMaterial, backMaterial, edgeMaterial, metalMaterial, bandMaterial].forEach(material => material.dispose());
+      [frontMaterial, backMaterial, edgeMaterial, invisibleFaceMaterial, metalMaterial, bandMaterial].forEach(material => material.dispose());
       [frontTexture, backTexture, strapTexture, grain, weave].forEach(texture => texture.dispose());
       environment.dispose();
       renderer.dispose();
