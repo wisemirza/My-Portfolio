@@ -39,10 +39,10 @@ export default function App() {
   }
 
   return (
-    <main className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col items-center justify-start px-6 pt-0 pb-20 selection:bg-blue-600 selection:text-white antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col items-center justify-start px-6 pt-0 pb-20 selection:bg-blue-600 selection:text-white antialiased relative overflow-x-hidden">
       
-      {/* 1. Lanyard Hanging ID Badge - Interactive 3D component starting from the top */}
-      <div className="w-full max-w-xl h-[360px] sm:h-[400px] relative pointer-events-auto">
+      {/* 1. Lanyard Hanging ID Badge - Interactive 3D component starting from the top, full width, layered above text */}
+      <div className="absolute top-0 left-0 right-0 w-full h-[520px] sm:h-[580px] z-20 pointer-events-none overflow-visible">
         <Lanyard 
           frontImage="/profile.jpg"
           backImage="/profile.jpg"
@@ -50,18 +50,19 @@ export default function App() {
           finish="metallic"
           metal="silver"
           strapColor="#18181b"
-          size={0.65}
-          strapLength={0.35}
+          size={0.38}
+          strapLength={0.16}
+          alignLeftWith="#intro-heading"
           interactive={true}
         />
       </div>
 
-      <div className="w-full max-w-xl mx-auto space-y-8 -mt-6 sm:-mt-8">
+      <div className="w-full max-w-xl mx-auto space-y-8 pt-[310px] sm:pt-[330px] relative z-10">
 
         {/* 2. Heading with integrated Location Badge right beside name */}
         <div className="fade-in-2 space-y-2">
           <div className="flex items-center gap-3">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            <h1 id="intro-heading" className="text-3xl sm:text-4xl font-bold tracking-tight text-white inline-block">
               Hi, I'm Waiz.
             </h1>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-zinc-400 bg-zinc-900 border border-zinc-800">
