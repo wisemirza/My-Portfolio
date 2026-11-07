@@ -188,19 +188,19 @@ export function ProjectArticle() {
           {/* Narrative: what it did, what was involved */}
           <div className="space-y-4 text-sm sm:text-base text-zinc-400 leading-relaxed font-normal">
             <p className="reveal" style={{ '--i': 2 }}>
-              As student representative for the data science and AI cohort at UWE Bristol, I found that the majority of our cohort was Chinese and had to uninstall WhatsApp. WhatsApp was primarily used as a way to share feedback, but many of them did not participate because they were not familiar with the platform, they had language barriers, and they were shy to give feedback.
+              As a student representative for the Data Science and AI cohort at UWE Bristol, my job was to gather feedback from students and inform my module leaders about it so that we could tackle the issues students were facing during the course. During my training, I was told that the best method to collect feedback was creating a WhatsApp group. The only issue was that when I created a WhatsApp group, I realized that 50% of our cohort was Chinese, and they were not familiar with WhatsApp. Many of them did not even have WhatsApp installed on their devices.
             </p>
 
             <p className="reveal" style={{ '--i': 3 }}>
-              International students, particularly Chinese speakers, often hesitated to post questions or raise issues due to English translation anxiety.
+              Initially, I was only able to add two to three students. I even remember a student had to install WhatsApp just to join my group, and many of them hesitated to raise any questions or issues, or even reply to some of my messages. That's when I realized that there was an issue.
             </p>
 
             <p className="reveal" style={{ '--i': 4 }}>
-              Students also avoided giving honest feedback about course modules or assessment schedules because their phone numbers and personal identities were exposed to everyone in the chat. We were never able to run a successful WhatsApp group. In fact, we had difficulty even adding or getting any feedback on our WhatsApp group, and we were only able to add two or three students.
+              So, I built a separate website called Student Voice, which was accessible by everyone without needing to install anything. It supported Simplified Chinese translations for the Chinese students who struggled to understand English. Additionally, unlike a WhatsApp group where you can see each member and their phone number, students here were completely anonymous, and even if they were hesitant to speak or say something, they could simply upvote issues that they agreed with. This platform was designed to maximize feedback without pushing or forcing anyone. We finally saw results, receiving our first feedbacks and much more upvotes on those feedbacks.
             </p>
 
             <p className="reveal text-zinc-300 font-medium pt-1" style={{ '--i': 5 }}>
-              Before jumping to write any code, I structured the solution through formal business analysis deliverables.
+              To transform this project into a business analysis case study, I gave myself a small challenge where I broke this down into formal business analysis deliverables, which was a fun project made in Miro. Below is an interactive dashboard for you to view what I built.
             </p>
           </div>
 

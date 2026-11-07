@@ -84,7 +84,7 @@ function HomePage() {
             I'm currently an undergraduate studying <span className="text-zinc-200 font-medium">Data Science and Artificial Intelligence</span> at the University of the West of England (UWE Bristol).
           </p>
           <p className="reveal" style={{ '--i': 3 }}>
-            I'm passionate about becoming a <span className="text-zinc-200 font-medium">Business Analyst</span>. I love taking complex, messy problems, speaking with users to understand what's actually broken, and translating those needs into clear processes, user stories, and practical requirements that teams can build with confidence.
+            I'm passionate about becoming a <span className="text-zinc-200 font-medium">Business Analyst</span>. I love identifying issues, creating solutions, outlining the process, and delivering results that actually work to make businesses and people's lives better.
           </p>
           <p className="reveal text-sm sm:text-base text-zinc-500" style={{ '--i': 4 }}>
             Currently representing my cohort as an elected Student Representative, with a background in computing and business management.
