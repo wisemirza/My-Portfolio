@@ -9,15 +9,19 @@ import {
 } from 'lucide-react';
 
 export default function ProjectsPage({ onBack }) {
+  const isArticleHash = (hash) => {
+    return typeof hash === 'string' && hash.startsWith('#/projects/') && hash !== '#/projects';
+  };
+
   const [activeProject, setActiveProject] = useState(() => {
-    return window.location.hash === '#/projects/student-voice' ? 'student-voice' : null;
+    return isArticleHash(window.location.hash) ? 'student-voice' : null;
   });
 
   useEffect(() => {
     const handleHash = () => {
-      if (window.location.hash === '#/projects/student-voice') {
+      if (isArticleHash(window.location.hash)) {
         setActiveProject('student-voice');
-      } else if (window.location.hash === '#/projects') {
+      } else {
         setActiveProject(null);
       }
     };
@@ -40,7 +44,7 @@ export default function ProjectsPage({ onBack }) {
   // ==============================================================
   // ARTICLE / DETAIL VIEW
   // ==============================================================
-  if (activeProject === 'student-voice') {
+  if (activeProject) {
     return (
       <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-blue-600 selection:text-white antialiased">
         <div className="max-w-2xl mx-auto px-6 py-16 sm:py-20 space-y-12">
@@ -199,13 +203,13 @@ export default function ProjectsPage({ onBack }) {
         {/* Project Card */}
         <div className="space-y-4 pt-2">
           
-          {/* Visual Frame Container (Clickable) */}
+          {/* Visual Frame Container (Clickable, no blue outlines) */}
           <div 
             onClick={() => openProject('student-voice')}
-            className="group cursor-pointer relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800/90 bg-gradient-to-br from-zinc-900 via-[#101014] to-zinc-950 p-6 sm:p-8 flex items-center justify-center transition-all duration-300 hover:border-zinc-700 hover:shadow-2xl hover:shadow-blue-950/20"
+            className="group cursor-pointer relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800/90 bg-gradient-to-br from-zinc-900 via-[#101014] to-zinc-950 p-6 sm:p-8 flex items-center justify-center transition-all duration-300 hover:border-zinc-700 hover:shadow-2xl hover:shadow-black/50"
           >
             {/* Subtle ambient background glow */}
-            <div className="absolute inset-0 bg-radial-gradient from-blue-500/5 via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-radial-gradient from-white/[0.03] via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
 
             {/* Inner Mockup Frame */}
             <div className="relative w-full max-w-md rounded-xl bg-zinc-950/90 border border-zinc-800/80 p-5 shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
@@ -232,7 +236,7 @@ export default function ProjectsPage({ onBack }) {
                 </div>
                 <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-1">
                   <span>UWE Bristol &middot; Data Science &amp; AI</span>
-                  <span className="text-blue-400 group-hover:underline">View Deliverables &rarr;</span>
+                  <span className="text-zinc-300 group-hover:text-white">View Deliverables &rarr;</span>
                 </div>
               </div>
 
@@ -249,14 +253,14 @@ export default function ProjectsPage({ onBack }) {
             </span>
           </div>
 
-          {/* Button: Learn more about this project */}
+          {/* Button: Learn more about this project (NO blue outline, subtle bg lightening only) */}
           <div className="pt-2 px-1">
             <button
               onClick={() => openProject('student-voice')}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white border border-zinc-800 hover:border-blue-500/60 transition-all cursor-pointer group shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-transparent outline-none focus:outline-none focus:ring-0 transition-colors cursor-pointer group shadow-sm"
             >
               <span>Learn more about this project</span>
-              <ArrowRight className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
             </button>
           </div>
 

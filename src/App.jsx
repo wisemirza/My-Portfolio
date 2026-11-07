@@ -4,13 +4,18 @@ import ProjectsPage from './components/ProjectsPage';
 
 export default function App() {
   const [imageLoaded, setImageLoaded] = useState(false);
+  
+  const isProjectsRoute = (hash) => {
+    return typeof hash === 'string' && hash.startsWith('#/projects');
+  };
+
   const [currentPage, setCurrentPage] = useState(() => {
-    return window.location.hash === '#/projects' ? 'projects' : 'home';
+    return isProjectsRoute(window.location.hash) ? 'projects' : 'home';
   });
 
   useEffect(() => {
     const handleHashChange = () => {
-      setCurrentPage(window.location.hash === '#/projects' ? 'projects' : 'home');
+      setCurrentPage(isProjectsRoute(window.location.hash) ? 'projects' : 'home');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
     window.addEventListener('hashchange', handleHashChange);
