@@ -16,11 +16,23 @@ export function useTheme() {
 
   useEffect(() => {
     const root = document.documentElement;
+    const body = document.body;
+
+    // Remove any legacy hardcoded dark classes that may still be attached to html/body
+    root.classList.remove('bg-[#09090b]', 'text-zinc-100');
+    if (body) {
+      body.classList.remove('bg-[#09090b]', 'text-zinc-200');
+    }
+
+    root.setAttribute('data-theme', theme);
     if (theme === 'dark') {
       root.classList.add('dark');
+      root.classList.remove('light');
     } else {
       root.classList.remove('dark');
+      root.classList.add('light');
     }
+
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) {
       meta.setAttribute('content', theme === 'dark' ? '#09090b' : '#f5f4f0');
