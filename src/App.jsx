@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Github, MapPin, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { Mail, Github, MapPin, ArrowUpRight, FolderKanban } from 'lucide-react';
 import ProjectsPage from './components/ProjectsPage';
 
 export default function App() {
@@ -35,7 +35,7 @@ export default function App() {
   }
 
   return (
-    <main className="min-h-screen bg-[#09090b] text-zinc-100 flex items-center justify-center px-6 py-16 selection:bg-purple-600 selection:text-white antialiased">
+    <main className="min-h-screen bg-[#09090b] text-zinc-100 flex items-center justify-center px-6 py-16 selection:bg-blue-600 selection:text-white antialiased">
       <div className="w-full max-w-xl mx-auto space-y-8">
         
         {/* 1. Circular Profile Frame */}
@@ -64,7 +64,7 @@ export default function App() {
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
             Hi, I'm Waiz.
           </h1>
-          <p className="text-sm font-medium text-purple-400">
+          <p className="text-sm font-medium text-blue-400">
             Aspiring Business Analyst &middot; Data Science &amp; AI Student
           </p>
         </div>
@@ -82,13 +82,22 @@ export default function App() {
           </p>
         </div>
 
-        {/* 4. Minimal touchpoints */}
-        <div className="fade-in-4 pt-4 border-t border-zinc-800/80 flex flex-wrap items-center gap-6 text-sm text-zinc-400">
+        {/* 4. Minimal touchpoints (Check out my projects first, then Email me, then GitHub, Bristol UK) */}
+        <div className="fade-in-4 pt-4 border-t border-zinc-800/80 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-400">
+          <button
+            onClick={() => navigateTo('projects')}
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500 cursor-pointer"
+          >
+            <FolderKanban className="w-4 h-4 text-blue-400" />
+            <span>Check out my projects</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
+          </button>
+
           <a
             href="mailto:Mohammad2.Mirza@live.uwe.ac.uk"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-purple-500"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
           >
-            <Mail className="w-4 h-4 text-purple-400" />
+            <Mail className="w-4 h-4 text-blue-400" />
             <span>Email me</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
           </a>
@@ -97,28 +106,17 @@ export default function App() {
             href="https://github.com/wisemirza"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-purple-500"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500"
           >
             <Github className="w-4 h-4 text-zinc-400" />
             <span>GitHub</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600" />
           </a>
 
-          <div className="inline-flex items-center gap-1.5 text-zinc-500 text-xs sm:text-sm ml-auto">
+          <div className="inline-flex items-center gap-1.5 text-zinc-500 text-xs sm:text-sm sm:ml-auto">
             <MapPin className="w-3.5 h-3.5 text-zinc-600" />
             <span>Bristol, UK</span>
           </div>
-        </div>
-
-        {/* 5. Clean "Check out my projects" Button */}
-        <div className="fade-in-4 pt-3">
-          <button
-            onClick={() => navigateTo('projects')}
-            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-medium bg-zinc-900 hover:bg-zinc-800 text-white border border-zinc-800 hover:border-purple-500/60 transition-all shadow-md group hover:translate-y-[-1px]"
-          >
-            <span>Check out my projects</span>
-            <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
-          </button>
         </div>
 
       </div>

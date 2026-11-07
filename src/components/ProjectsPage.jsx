@@ -9,14 +9,14 @@ import {
 
 export default function ProjectsPage({ onBack }) {
   return (
-    <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-purple-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-blue-600 selection:text-white antialiased">
       <div className="max-w-2xl mx-auto px-6 py-16 sm:py-20 space-y-12">
         
         {/* Top Navigation */}
         <div className="flex items-center justify-between">
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors group"
+            className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 text-zinc-500 group-hover:-translate-x-1 transition-transform" />
             <span>Back to home</span>
@@ -88,7 +88,7 @@ export default function ProjectsPage({ onBack }) {
           <div className="space-y-3 pt-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
-                <Workflow className="w-4 h-4 text-purple-400" />
+                <Workflow className="w-4 h-4 text-blue-400" />
                 <span>Interactive BA Deliverables (Miro Board)</span>
               </div>
               <a
@@ -126,10 +126,10 @@ export default function ProjectsPage({ onBack }) {
               href="https://studentrep.netlify.app"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-purple-500 font-medium"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500 font-medium"
             >
               <span>Live Student Voice App</span>
-              <ArrowUpRight className="w-4 h-4 text-purple-400" />
+              <ArrowUpRight className="w-4 h-4 text-blue-400" />
             </a>
 
             <span className="text-zinc-700">&middot;</span>
@@ -138,7 +138,7 @@ export default function ProjectsPage({ onBack }) {
               href="https://github.com/wisemirza/Studentrep"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-purple-500 font-medium"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-blue-500 font-medium"
             >
               <Github className="w-4 h-4 text-zinc-400" />
               <span>GitHub Repository</span>
@@ -152,7 +152,7 @@ export default function ProjectsPage({ onBack }) {
         <footer className="pt-12 border-t border-zinc-800/80 text-xs text-zinc-500 flex flex-col sm:flex-row items-center justify-between gap-4">
           <button
             onClick={onBack}
-            className="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-1"
+            className="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-1 cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to home</span>
