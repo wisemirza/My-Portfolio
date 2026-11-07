@@ -47,7 +47,7 @@ export default function App() {
           frontImage="/profile.jpg"
           backImage="/profile.jpg"
           cardColor="#ffffff"
-          finish="metallic"
+          finish="matte"
           metal="silver"
           strapColor="#18181b"
           cardPixelHeight={145}
