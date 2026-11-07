@@ -10,10 +10,10 @@ const Lanyard = lazy(() => import('./components/Lanyard'));
 const EXIT_MS = 200;
 
 const TOUCHPOINTS = [
-  { label: 'Check out my projects', href: '#/projects', Icon: FolderKanban, iconClass: 'text-[#FFF197]' },
-  { label: 'My CV', href: '/Mohammad_Waiz_Mirza_Business_Analyst_CV.pdf', Icon: FileText, external: true, iconClass: 'text-[#8EB9FC]' },
-  { label: 'Email me', href: 'mailto:Mohammad2.Mirza@live.uwe.ac.uk', Icon: Mail, iconClass: 'text-[#FF513D]' },
-  { label: 'GitHub', href: 'https://github.com/wisemirza', Icon: Github, external: true, iconClass: 'text-zinc-400' }
+  { label: 'Check out my projects', href: '#/projects', Icon: FolderKanban },
+  { label: 'My CV', href: '/Mohammad_Waiz_Mirza_Business_Analyst_CV.pdf', Icon: FileText, external: true },
+  { label: 'Email me', href: 'mailto:Mohammad2.Mirza@live.uwe.ac.uk', Icon: Mail },
+  { label: 'GitHub', href: 'https://github.com/wisemirza', Icon: Github, external: true }
 ];
 
 /**
@@ -108,14 +108,14 @@ function HomePage() {
           className="reveal pt-4 border-t border-zinc-800/80 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-400"
           style={{ '--i': 5 }}
         >
-          {TOUCHPOINTS.map(({ label, href, Icon, external, iconClass }) => (
+          {TOUCHPOINTS.map(({ label, href, Icon, external }) => (
             <a
               key={label}
               href={href}
               {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
               className="group inline-flex items-center gap-1.5 text-zinc-300 hover:text-white rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-zinc-600 transition-[color,transform] duration-300 ease-out hover:-translate-y-0.5"
             >
-              <Icon className={`w-4 h-4 ${iconClass}`} />
+              <Icon className="w-4 h-4 text-zinc-400" />
               <span className="link-underline">{label}</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600 transition-[transform,color] duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-zinc-300" />
             </a>
