@@ -57,42 +57,42 @@ export default function App() {
         />
       </div>
 
-      <div className="w-full max-w-xl mx-auto space-y-8 pt-[255px] sm:pt-[265px] relative z-10">
+      <div className="w-full max-w-xl mx-auto space-y-8 pt-[255px] sm:pt-[265px] relative z-10 animate-page">
 
         {/* 2. Heading with integrated Location Badge right beside name */}
-        <div className="fade-in-2 space-y-2">
-          <div className="flex items-center gap-3">
+        <div className="space-y-2">
+          <div className="flex items-center gap-3 anim-fade-up delay-1">
             <h1 id="intro-heading" className="text-3xl sm:text-4xl font-bold tracking-tight text-white inline-block">
               Hi, I'm Waiz.
             </h1>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-zinc-400 bg-zinc-900 border border-zinc-800">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-zinc-400 bg-zinc-900 border border-zinc-800 shadow-sm transition-transform hover:scale-105 duration-200">
               <MapPin className="w-3 h-3 text-zinc-400" />
               <span>Bristol, UK</span>
             </span>
           </div>
-          <p className="text-sm font-medium text-zinc-400">
+          <p className="text-sm font-medium text-zinc-400 anim-fade-up delay-2">
             Aspiring Business Analyst &middot; Data Science &amp; AI Student
           </p>
         </div>
 
-        {/* 3. Description (Clean, human, grounded) */}
-        <div className="fade-in-3 space-y-4 text-base sm:text-lg text-zinc-400 leading-relaxed font-normal">
-          <p>
+        {/* 3. Description (Clean, human, grounded, staggered entrance) */}
+        <div className="space-y-4 text-base sm:text-lg text-zinc-400 leading-relaxed font-normal">
+          <p className="anim-fade-up delay-3">
             I'm currently an undergraduate studying <span className="text-zinc-200 font-medium">Data Science and Artificial Intelligence</span> at the University of the West of England (UWE Bristol).
           </p>
-          <p>
+          <p className="anim-fade-up delay-4">
             I'm passionate about becoming a <span className="text-zinc-200 font-medium">Business Analyst</span>. I love taking complex, messy problems, speaking with users to understand what's actually broken, and translating those needs into clear processes, user stories, and practical requirements that teams can build with confidence.
           </p>
-          <p className="text-sm sm:text-base text-zinc-500">
+          <p className="text-sm sm:text-base text-zinc-500 anim-fade-up delay-5">
             Currently representing my cohort as an elected Student Representative, with a background in computing and business management.
           </p>
         </div>
 
-        {/* 4. Minimal touchpoints (Focused purely on actions) */}
-        <div className="fade-in-4 pt-4 border-t border-zinc-800/80 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-400">
+        {/* 4. Minimal touchpoints (Focused purely on actions, smooth interactive row) */}
+        <div className="pt-4 border-t border-zinc-800/80 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-400 anim-fade-up delay-6">
           <button
             onClick={() => navigateTo('projects')}
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500 cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 hover:underline underline-offset-4 decoration-zinc-500 cursor-pointer"
           >
             <FolderKanban className="w-4 h-4 text-zinc-400" />
             <span>Check out my projects</span>
@@ -103,7 +103,7 @@ export default function App() {
             href="/Mohammad_Waiz_Mirza_Business_Analyst_CV.pdf"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 hover:underline underline-offset-4 decoration-zinc-500"
           >
             <FileText className="w-4 h-4 text-zinc-400" />
             <span>My CV</span>
@@ -112,7 +112,7 @@ export default function App() {
 
           <a
             href="mailto:Mohammad2.Mirza@live.uwe.ac.uk"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 hover:underline underline-offset-4 decoration-zinc-500"
           >
             <Mail className="w-4 h-4 text-zinc-400" />
             <span>Email me</span>
@@ -123,7 +123,7 @@ export default function App() {
             href="https://github.com/wisemirza"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-colors hover:underline underline-offset-4 decoration-zinc-500"
+            className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 hover:underline underline-offset-4 decoration-zinc-500"
           >
             <Github className="w-4 h-4 text-zinc-400" />
             <span>GitHub</span>
