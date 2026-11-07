@@ -5,8 +5,7 @@ import {
   Github, 
   Workflow, 
   ArrowUpRight,
-  Sparkles,
-  Maximize2
+  ArrowRight
 } from 'lucide-react';
 
 export default function ProjectsPage({ onBack }) {
@@ -39,14 +38,14 @@ export default function ProjectsPage({ onBack }) {
   };
 
   // ==============================================================
-  // DETAIL / DOCUMENT VIEW (When user clicks on Student Voice card)
+  // ARTICLE / DETAIL VIEW
   // ==============================================================
   if (activeProject === 'student-voice') {
     return (
       <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-blue-600 selection:text-white antialiased">
         <div className="max-w-2xl mx-auto px-6 py-16 sm:py-20 space-y-12">
           
-          {/* Top Navigation */}
+          {/* Top Navigation Only */}
           <div className="flex items-center justify-between">
             <button
               onClick={closeProject}
@@ -61,9 +60,10 @@ export default function ProjectsPage({ onBack }) {
             </span>
           </div>
 
-          {/* Project Document Header */}
-          <section className="space-y-6 pt-2">
+          {/* Project Article */}
+          <article className="space-y-6 pt-2">
             
+            {/* Header */}
             <div className="flex items-start gap-4">
               <img
                 src="/icon.svg"
@@ -86,7 +86,7 @@ export default function ProjectsPage({ onBack }) {
               </div>
             </div>
 
-            {/* Grounded narrative */}
+            {/* Narrative: What it did, what was involved */}
             <div className="space-y-4 text-sm sm:text-base text-zinc-400 leading-relaxed font-normal">
               <p>
                 As student representative for the data science and AI cohort at UWE Bristol, I found that the majority of our cohort was Chinese and had to uninstall WhatsApp. WhatsApp was primarily used as a way to share feedback, but many of them did not participate because they were not familiar with the platform, they had language barriers, and they were shy to give feedback.
@@ -167,19 +167,7 @@ export default function ProjectsPage({ onBack }) {
               </a>
             </div>
 
-          </section>
-
-          {/* Footer */}
-          <footer className="pt-12 border-t border-zinc-800/80 text-xs text-zinc-500 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <button
-              onClick={closeProject}
-              className="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-1 cursor-pointer"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to projects</span>
-            </button>
-            <span>&copy; {new Date().getFullYear()} Mohammad Waiz Mirza &middot; Bristol, UK</span>
-          </footer>
+          </article>
 
         </div>
       </div>
@@ -187,13 +175,13 @@ export default function ProjectsPage({ onBack }) {
   }
 
   // ==============================================================
-  // PROJECTS OVERVIEW LIST (Matching reference image layout)
+  // PROJECTS OVERVIEW (No 'Projects' title, top nav only, clean button)
   // ==============================================================
   return (
     <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-blue-600 selection:text-white antialiased">
-      <div className="max-w-2xl mx-auto px-6 py-16 sm:py-20 space-y-10">
+      <div className="max-w-2xl mx-auto px-6 py-16 sm:py-20 space-y-8">
         
-        {/* Top Navigation */}
+        {/* Top Navigation Only */}
         <div className="flex items-center justify-between">
           <button
             onClick={onBack}
@@ -208,87 +196,71 @@ export default function ProjectsPage({ onBack }) {
           </span>
         </div>
 
-        {/* Section Heading with Thin Font */}
-        <div className="space-y-1">
-          <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-white/90">
-            Projects
-          </h1>
-        </div>
-
-        {/* Project Cards Stack */}
-        <div className="space-y-10 pt-2">
+        {/* Project Card */}
+        <div className="space-y-4 pt-2">
           
-          {/* Card: Student Voice */}
+          {/* Visual Frame Container (Clickable) */}
           <div 
             onClick={() => openProject('student-voice')}
-            className="group cursor-pointer space-y-3"
+            className="group cursor-pointer relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800/90 bg-gradient-to-br from-zinc-900 via-[#101014] to-zinc-950 p-6 sm:p-8 flex items-center justify-center transition-all duration-300 hover:border-zinc-700 hover:shadow-2xl hover:shadow-blue-950/20"
           >
-            {/* Visual Box Container (Placeholder for prototype/GIF) */}
-            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800/90 bg-gradient-to-br from-zinc-900 via-[#101014] to-zinc-950 p-6 sm:p-8 flex items-center justify-center transition-all duration-300 group-hover:border-zinc-700 group-hover:shadow-2xl group-hover:shadow-blue-950/20">
-              
-              {/* Subtle ambient background glow */}
-              <div className="absolute inset-0 bg-radial-gradient from-blue-500/5 via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+            {/* Subtle ambient background glow */}
+            <div className="absolute inset-0 bg-radial-gradient from-blue-500/5 via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
 
-              {/* Inner Mockup Frame representing working prototype */}
-              <div className="relative w-full max-w-md rounded-xl bg-zinc-950/90 border border-zinc-800/80 p-5 shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
-                
-                {/* Mock Header */}
-                <div className="flex items-center justify-between pb-3 border-b border-zinc-800/60">
-                  <div className="flex items-center gap-2.5">
-                    <img
-                      src="/icon.svg"
-                      alt="Student Voice Icon"
-                      className="w-7 h-7"
-                    />
-                    <span className="text-xs font-semibold text-white tracking-tight">
-                      Student Voice
-                    </span>
-                  </div>
-                  <span className="text-[10px] text-zinc-400 font-mono px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800">
-                    EN &middot; 中文
+            {/* Inner Mockup Frame */}
+            <div className="relative w-full max-w-md rounded-xl bg-zinc-950/90 border border-zinc-800/80 p-5 shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
+              
+              <div className="flex items-center justify-between pb-3 border-b border-zinc-800/60">
+                <div className="flex items-center gap-2.5">
+                  <img
+                    src="/icon.svg"
+                    alt="Student Voice Icon"
+                    className="w-7 h-7"
+                  />
+                  <span className="text-xs font-semibold text-white tracking-tight">
+                    Student Voice
                   </span>
                 </div>
+                <span className="text-[10px] text-zinc-400 font-mono px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800">
+                  EN &middot; 中文
+                </span>
+              </div>
 
-                {/* Mock Feedback Box */}
-                <div className="mt-3 space-y-2">
-                  <div className="h-10 rounded-lg bg-zinc-900/80 border border-zinc-800/60 px-3 flex items-center text-xs text-zinc-500">
-                    Anonymous cohort feedback &middot; Tap to read full project...
-                  </div>
-                  <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-1">
-                    <span>UWE Bristol &middot; Data Science &amp; AI</span>
-                    <span className="text-blue-400 group-hover:underline">View Deliverables &rarr;</span>
-                  </div>
+              <div className="mt-3 space-y-2">
+                <div className="h-10 rounded-lg bg-zinc-900/80 border border-zinc-800/60 px-3 flex items-center text-xs text-zinc-500">
+                  Anonymous cohort feedback &middot; Tap to read full project...
                 </div>
-
+                <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-1">
+                  <span>UWE Bristol &middot; Data Science &amp; AI</span>
+                  <span className="text-blue-400 group-hover:underline">View Deliverables &rarr;</span>
+                </div>
               </div>
 
             </div>
+          </div>
 
-            {/* Caption Row underneath container (matching reference layout) */}
-            <div className="flex items-center justify-between text-xs sm:text-sm text-zinc-400 px-1">
-              <span className="text-zinc-300 font-medium group-hover:text-white transition-colors">
-                Bilingual student feedback &amp; voting platform
-              </span>
-              <span className="text-zinc-500 font-normal flex-shrink-0 ml-3">
-                Student Voice &middot; 2026
-              </span>
-            </div>
+          {/* Project Name and Year Row */}
+          <div className="flex items-center justify-between text-xs sm:text-sm text-zinc-400 px-1">
+            <span className="text-zinc-200 font-medium">
+              Bilingual student feedback &amp; voting platform
+            </span>
+            <span className="text-zinc-500 font-normal flex-shrink-0 ml-3">
+              Student Voice &middot; 2026
+            </span>
+          </div>
 
+          {/* Button: Learn more about this project */}
+          <div className="pt-2 px-1">
+            <button
+              onClick={() => openProject('student-voice')}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white border border-zinc-800 hover:border-blue-500/60 transition-all cursor-pointer group shadow-sm"
+            >
+              <span>Learn more about this project</span>
+              <ArrowRight className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-0.5 transition-transform" />
+            </button>
           </div>
 
         </div>
-
-        {/* Minimal Footer */}
-        <footer className="pt-12 border-t border-zinc-800/80 text-xs text-zinc-500 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <button
-            onClick={onBack}
-            className="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-1 cursor-pointer"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to home</span>
-          </button>
-          <span>&copy; {new Date().getFullYear()} Mohammad Waiz Mirza &middot; Bristol, UK</span>
-        </footer>
 
       </div>
     </div>
