@@ -49,7 +49,7 @@ function HomePage() {
         <Suspense fallback={null}>
           <Lanyard
             frontImage="/officialcardimage-v4.png"
-            backImage="/officialcardimage-v4.png"
+            backImage="/officialcardimage-back-v1.png"
             cardColor="#242424"
             finish="matte"
             metal="silver"
