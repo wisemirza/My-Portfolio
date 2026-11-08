@@ -234,7 +234,7 @@ export function ProjectArticle() {
             className="reveal pt-4 flex flex-wrap items-center gap-4 text-sm border-t border-zinc-800/80"
             style={{ '--i': 7 }}
           >
-            <ExternalTextLink href="https://studentrep.netlify.app">Live Student Voice App</ExternalTextLink>
+            <ExternalTextLink href="https://studentvc.netlify.app/">Live Student Voice App</ExternalTextLink>
 
             <span className="text-zinc-700">&middot;</span>
 

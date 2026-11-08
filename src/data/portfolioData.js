@@ -28,7 +28,7 @@ export const portfolioData = {
       tag: "Live Platform & BA Case Study",
       year: "2026",
       summary: "Identified communication barriers in our university cohort's WhatsApp chat, mapped the broken process, and delivered a bilingual, account-free web app that enables anonymous submission and prioritised voting.",
-      liveUrl: "https://studentrep.netlify.app",
+      liveUrl: "https://studentvc.netlify.app/",
       githubUrl: "https://github.com/wisemirza/Studentrep",
       context: {
         role: "Student Representative & Business Analyst",
