@@ -48,7 +48,7 @@ function HomePage() {
       <div className="absolute inset-0 z-20 pointer-events-none">
         <Suspense fallback={null}>
           <Lanyard
-            frontImage="/officialcardimage-v4.png"
+            frontImage="/officialcardimage-v6.png"
             backImage="/officialcardimage-back-v1.png"
             cardColor="#242424"
             finish="matte"
