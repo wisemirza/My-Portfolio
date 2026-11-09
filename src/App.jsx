@@ -36,7 +36,7 @@ function usePageTransition(route) {
       setLeaving(false);
     }, EXIT_MS);
     return () => clearTimeout(timer);
-  }, [route, shown.key]);
+  }, [route, route.key, shown.key]);
 
   return { shown, leaving };
 }
@@ -113,7 +113,7 @@ function HomePage() {
               key={label}
               href={href}
               {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-              className="group inline-flex items-center gap-1.5 text-zinc-300 hover:text-white rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-zinc-600 transition-[color,transform] duration-300 ease-out hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-1.5 py-1 touch-manipulation text-zinc-300 hover:text-white rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-zinc-600 transition-[color,transform] duration-300 ease-out hover:-translate-y-0.5"
             >
               <Icon className={`w-4 h-4 text-zinc-400 transition-colors duration-300 ${hoverClass}`} />
               <span className="link-underline">{label}</span>

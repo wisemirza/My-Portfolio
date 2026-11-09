@@ -21,7 +21,7 @@ function BackLink({ href, children }) {
   return (
     <a
       href={href}
-      className="group inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-zinc-600 transition-colors duration-300"
+      className="group inline-flex items-center gap-2 py-1 touch-manipulation text-sm text-zinc-400 hover:text-white rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-zinc-600 transition-colors duration-300"
     >
       <ArrowLeft className="w-4 h-4 text-zinc-500 transition-transform duration-300 ease-out group-hover:-translate-x-1" />
       <span>{children}</span>
@@ -35,7 +35,7 @@ function ExternalTextLink({ href, children, icon, iconClass = 'w-4 h-4' }) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="group inline-flex items-center gap-1.5 font-medium text-zinc-300 hover:text-white rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-zinc-600 transition-[color,transform] duration-300 ease-out hover:-translate-y-0.5"
+      className="group inline-flex items-center gap-1.5 py-1 touch-manipulation font-medium text-zinc-300 hover:text-white rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-zinc-600 transition-[color,transform] duration-300 ease-out hover:-translate-y-0.5"
     >
       {icon}
       <span className="link-underline">{children}</span>
